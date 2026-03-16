@@ -1,64 +1,82 @@
 # DevOps Kubernetes Project
 
-This project demonstrates a DevOps architecture using Kubernetes running on AWS EC2.
+Este projeto demonstra o deploy de uma aplicação containerizada utilizando Kubernetes em uma instância AWS EC2.
+
+O objetivo foi praticar conceitos importantes de DevOps como containerização, orquestração de containers e exposição de serviços dentro de um cluster Kubernetes.
 
 ---
 
-# Architecture
+## Arquitetura
 
 User (Browser)
-      │
-      ▼
+↓
 Internet
-      │
-      ▼
+↓
 AWS EC2 Instance
-      │
-      ▼
+↓
 K3s Kubernetes Cluster
-      │
-      ▼
+↓
 Nginx Deployment (Pods)
-      │
-      ▼
+↓
 Kubernetes Service (NodePort)
-      │
-      ▼
-Application accessible in browser
+↓
+Aplicação acessível no navegador
 
 ---
 
-# Technologies Used
+## Tecnologias utilizadas
 
 - AWS EC2
 - Kubernetes (K3s)
 - Docker
 - Nginx
+- Linux
 - Git
 - GitHub
 
 ---
 
-# Kubernetes Deployment
+## Deploy da aplicação
 
-Deployment file:
+Criar deployment:
 
+kubectl create deployment nginx-deployment --image=nginx
 
-k8s/deployment.yaml
+Verificar pods:
 
+kubectl get pods
 
-Service file:
+Expor aplicação:
 
+kubectl expose deployment nginx-deployment --type=NodePort --port=80
 
-k8s/service.yaml
+Verificar serviço:
 
+kubectl get svc
 
 ---
 
-# Access Application
+## Acesso à aplicação
 
+Após expor o serviço, a aplicação pode ser acessada pelo navegador utilizando o IP público da instância EC2 e a porta NodePort.
 
-http://100.26.42.81:30007
+Exemplo:
 
+http://100.26.42.81:31351
 
-This will display the Nginx Welcome Page running inside Kubernetes.
+Isso exibirá a página padrão do Nginx rodando dentro do Kubernetes.
+
+---
+
+## Objetivo do projeto
+
+Este projeto foi criado para praticar:
+
+- Deploy de aplicações em Kubernetes
+- Estrutura de um cluster Kubernetes
+- Exposição de serviços com NodePort
+- Integração entre Docker, Kubernetes e AWS
+
+## Autora
+
+Rayane Santana
