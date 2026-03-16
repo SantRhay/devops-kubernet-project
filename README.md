@@ -6,24 +6,6 @@ O objetivo foi praticar conceitos importantes de DevOps como containerização, 
 
 ---
 
-## Arquitetura
-
-User (Browser)
-↓
-Internet
-↓
-AWS EC2 Instance
-↓
-K3s Kubernetes Cluster
-↓
-Nginx Deployment (Pods)
-↓
-Kubernetes Service (NodePort)
-↓
-Aplicação acessível no navegador
-
----
-
 ## Tecnologias utilizadas
 
 - AWS EC2
@@ -35,6 +17,33 @@ Aplicação acessível no navegador
 - GitHub
 
 ---
+## DevOps Pipeline Architecture
+
+```mermaid
+flowchart TD
+    A[Developer] --> B[GitHub Repository]
+    B --> C[GitHub Actions CI/CD]
+    C --> D[Build Docker Image]
+    D --> E[Push Docker Image to DockerHub]
+    E --> F[Kubernetes Cluster]
+    F --> G[Deployment]
+    G --> H[Pods]
+    H --> I[Service NodePort]
+    I --> J[Application Access]
+
+    F --> K[Prometheus Monitoring]
+    K --> L[Grafana Dashboards]
+```
+## Como a Arquitetura Funciona
+
+1. O desenvolvedor envia o código para o repositório no GitHub.
+2. O GitHub pode executar pipelines de CI/CD usando GitHub Actions.
+3. Uma imagem Docker é construída a partir da aplicação.
+4. A imagem é enviada para um repositório de imagens (DockerHub).
+5. O Kubernetes puxa essa imagem e realiza o deploy no cluster.
+6. Os Pods executam a aplicação dentro do cluster Kubernetes.
+7. Um Service do tipo NodePort expõe a aplicação para acesso externo.
+8. O Prometheus coleta métricas do ambiente e o Grafana exibe dashboards de monitoramento.
 
 ## Deploy da aplicação
 
@@ -66,25 +75,6 @@ http://100.26.42.81:31351
 
 Isso exibirá a página padrão do Nginx rodando dentro do Kubernetes.
 
----
-
-## DevOps Pipeline Architecture
-
-```mermaid
-flowchart TD
-    A[Developer] --> B[GitHub Repository]
-    B --> C[GitHub Actions CI/CD]
-    C --> D[Build Docker Image]
-    D --> E[Push Docker Image to DockerHub]
-    E --> F[Kubernetes Cluster]
-    F --> G[Deployment]
-    G --> H[Pods]
-    H --> I[Service NodePort]
-    I --> J[Application Access]
-
-    F --> K[Prometheus Monitoring]
-    K --> L[Grafana Dashboards]
-```
 ---
 
 ## Objetivo do projeto
