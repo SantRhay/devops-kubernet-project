@@ -68,20 +68,9 @@ Isso exibirá a página padrão do Nginx rodando dentro do Kubernetes.
 
 ---
 
-## Objetivo do projeto
-
-Este projeto foi criado para praticar:
-
-- Deploy de aplicações em Kubernetes
-- Estrutura de um cluster Kubernetes
-- Exposição de serviços com NodePort
-- Integração entre Docker, Kubernetes e AWS
-
----
-
 ## DevOps Pipeline Architecture
 
-mermaid
+```mermaid
 flowchart TD
     A[Developer] --> B[GitHub Repository]
     B --> C[GitHub Actions CI/CD]
@@ -95,8 +84,19 @@ flowchart TD
 
     F --> K[Prometheus Monitoring]
     K --> L[Grafana Dashboards]
+```
+---
 
+## Objetivo do projeto
 
+Este projeto foi criado para praticar:
+
+- Deploy de aplicações em Kubernetes
+- Estrutura de um cluster Kubernetes
+- Exposição de serviços com NodePort
+- Integração entre Docker, Kubernetes e AWS
+
+---
 ## Autora
 
 Rayane Santana
