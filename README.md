@@ -77,6 +77,26 @@ Este projeto foi criado para praticar:
 - Exposição de serviços com NodePort
 - Integração entre Docker, Kubernetes e AWS
 
+---
+
+## DevOps Pipeline Architecture
+
+mermaid
+flowchart TD
+    A[Developer] --> B[GitHub Repository]
+    B --> C[GitHub Actions CI/CD]
+    C --> D[Build Docker Image]
+    D --> E[Push Docker Image to DockerHub]
+    E --> F[Kubernetes Cluster]
+    F --> G[Deployment]
+    G --> H[Pods]
+    H --> I[Service NodePort]
+    I --> J[Application Access]
+
+    F --> K[Prometheus Monitoring]
+    K --> L[Grafana Dashboards]
+
+
 ## Autora
 
 Rayane Santana
